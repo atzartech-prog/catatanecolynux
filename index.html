@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoLinux Revive 🌿 | Orchestrated by Antigravity</title>
+  <meta name="description" content="Aplikasi panduan dan orkestrasi Antigravity untuk menghidupkan gadget lama (HP Android, STB, Laptop tua) menjadi server Linux produktif via SSH guna mencegah e-waste.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Background Ambient Glow -->
+  <div class="eco-glow glow-1"></div>
+  <div class="eco-glow glow-2"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>EcoLinux Revive <span class="badge-ai">Antigravity AI</span></h1>
+          <p class="tagline">Solusi Cegah E-Waste: Sulap Gadget Lawas Menjadi Server Produktif via SSH</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a href="#calculator" class="eco-stat-chip">
+          <span class="pulse-dot"></span>
+          <span id="header-eco-stat">Pencegahan E-Waste: Aktif</span>
+        </a>
+        <button id="theme-toggle" class="btn-icon" title="Ubah Mode Tampilan" aria-label="Toggle Theme">
+          <span class="icon">🌓</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Metrics Banner -->
+    <div class="metrics-bar">
+      <div class="metric-item">
+        <span class="metric-icon">📱</span>
+        <div>
+          <strong id="metric-devices">6+ Tipe</strong>
+          <span>Kategori Gadget</span>
+        </div>
+      </div>
+      <div class="metric-item">
+        <span class="metric-icon">⚡</span>
+        <div>
+          <strong>SSH & ADB</strong>
+          <span>Protokol Remote</span>
+        </div>
+      </div>
+      <div class="metric-item">
+        <span class="metric-icon">🧠</span>
+        <div>
+          <strong>Antigravity</strong>
+          <span>AI Orchestrator</span>
+        </div>
+      </div>
+      <div class="metric-item">
+        <span class="metric-icon">🌱</span>
+        <div>
+          <strong id="metric-waste">0 Kg E-Waste</strong>
+          <span>Estimasi Tercegah</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs" aria-label="Navigasi Utama">
+      <button class="nav-tab active" data-tab="catalog">
+        <span class="tab-icon">📱</span> Katalog Gadget
+      </button>
+      <button class="nav-tab" data-tab="methods">
+        <span class="tab-icon">⚡</span> Metode Remote (SSH/ADB)
+      </button>
+      <button class="nav-tab" data-tab="orchestrator">
+        <span class="tab-icon">🧠</span> Antigravity Orchestrator
+      </button>
+      <button class="nav-tab" data-tab="playbook">
+        <span class="tab-icon">🛠️</span> Playbook Generator
+      </button>
+      <button class="nav-tab" data-tab="terminal">
+        <span class="tab-icon">💻</span> Terminal Simulator
+      </button>
+      <button class="nav-tab" data-tab="calculator">
+        <span class="tab-icon">♻️</span> Kalkulator E-Waste
+      </button>
+      <button class="nav-tab" data-tab="troubleshoot">
+        <span class="tab-icon">💡</span> Tips & Keep-Alive
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-container">
+
+    <!-- TAB 1: GADGET CATALOG -->
+    <section id="tab-catalog" class="tab-pane active">
+      <div class="section-intro">
+        <div>
+          <h2>Pilih Jenis Gadget Lama Anda</h2>
+          <p>Jangan biarkan menumpuk di laci jadi sampah elektronik. Pilih perangkat Anda untuk melihat arsitektur, potensi servis, dan panduan konfigurasinya.</p>
+        </div>
+        <div class="filter-controls">
+          <input type="text" id="gadget-search" class="search-input" placeholder="🔍 Cari gadget (misal: Android, STB, B860H, x86)...">
+          <select id="gadget-filter" class="select-filter">
+            <option value="all">Semua Kategori</option>
+            <option value="android">Smartphone Android</option>
+            <option value="stb">TV Box / STB</option>
+            <option value="laptop">Laptop / PC Tua</option>
+            <option value="sbc">Single Board / RPi</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="gadget-grid" id="gadget-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 2: REMOTE SETUP METHODS -->
+    <section id="tab-methods" class="tab-pane">
+      <div class="section-intro">
+        <div>
+          <h2>Protokol Akses Remote & Persiapan Awal</h2>
+          <p>Bagaimana Antigravity dan workstation Anda dapat berkomunikasi dengan gadget target tanpa monitor atau keyboard eksternal (Headless Mode).</p>
+        </div>
+      </div>
+
+      <div class="methods-grid">
+        <!-- Method 1: Termux SSH -->
+        <div class="method-card">
+          <div class="method-header">
+            <span class="method-badge badge-green">No Root / Root</span>
+            <h3>1. SSH via Termux (Android)</h3>
+          </div>
+          <p class="method-desc">Metode tercepat untuk smartphone Android bekas tanpa perlu flashing ROM baru.</p>
+          <div class="code-box">
+            <div class="code-box-header">
+              <span>Perintah Setup Awal Termux:</span>
+              <button class="copy-btn" data-target="code-method-termux">Salin</button>
+            </div>
+            <pre><code id="code-method-termux">pkg update -y && pkg install -y openssh
+# Buat password untuk user Termux
+passwd
+# Jalankan SSH Daemon di port 8022
+sshd
+# Cek alamat IP lokal
+ip addr show | grep -E "inet 192\.|10\."
+# Dapatkan username Termux Anda
+whoami</code></pre>
+          </div>
+          <div class="method-tips">
+            <strong>💡 Kunci Akses:</strong> Port default Termux adalah <code>8022</code>. Login via workstation: <code>ssh user@&lt;ip-hp&gt; -p 8022</code>.
+          </div>
+        </div>
+
+        <!-- Method 2: OpenSSH di Debian/Armbian/Alpine -->
+        <div class="method-card">
+          <div class="method-header">
+            <span class="method-badge badge-emerald">Standar Linux</span>
+            <h3>2. OpenSSH Server (STB & Laptop)</h3>
+          </div>
+          <p class="method-desc">Untuk STB yang sudah dibooting Armbian atau Laptop lama dengan Debian/Ubuntu/Alpine.</p>
+          <div class="code-box">
+            <div class="code-box-header">
+              <span>Setup OpenSSH & Akses SSH Key:</span>
+              <button class="copy-btn" data-target="code-method-openssh">Salin</button>
+            </div>
+            <pre><code id="code-method-openssh">sudo apt update && sudo apt install -y openssh-server ufw
+sudo systemctl enable --now ssh
+# Konfigurasi firewall lokal
+sudo ufw allow 22/tcp
+sudo ufw enable
+# Tambahkan SSH Key dari workstation Anda (opsional tapi aman)
+# Di workstation: ssh-copy-id root@&lt;ip-gadget&gt;</code></pre>
+          </div>
+          <div class="method-tips">
+            <strong>💡 Antigravity Friendly:</strong> Menggunakan SSH Key tanpa password memudahkan Antigravity mengeksekusi otomatisasi tanpa terhenti di prompt password.
+          </div>
+        </div>
+
+        <!-- Method 3: ADB over Wi-Fi -->
+        <div class="method-card">
+          <div class="method-header">
+            <span class="method-badge badge-amber">Android Debug Bridge</span>
+            <h3>3. ADB Wireless (Tanpa Kabel)</h3>
+          </div>
+          <p class="method-desc">Berguna jika layar HP pecah/touchscreen mati, Anda bisa mengontrolnya langsung dari shell adb.</p>
+          <div class="code-box">
+            <div class="code-box-header">
+              <span>Koneksi ADB TCP/IP:</span>
+              <button class="copy-btn" data-target="code-method-adb">Salin</button>
+            </div>
+            <pre><code id="code-method-adb"># Aktifkan USB Debugging di HP sekali dengan kabel
+adb tcpip 5555
+# Cabut kabel, sambungkan via Wi-Fi lokal
+adb connect &lt;ip-hp&gt;:5555
+# Masuk ke shell internal Android
+adb shell
+# Atau forward port Termux ke laptop
+adb forward tcp:8022 tcp:8022</code></pre>
+          </div>
+          <div class="method-tips">
+            <strong>💡 Layar Rusak?</strong> Anda bisa install APK Termux via ADB: <code>adb install termux.apk</code> lalu kirim intent untuk auto-start SSH.
+          </div>
+        </div>
+
+        <!-- Method 4: Serial UART / TTL -->
+        <div class="method-card">
+          <div class="method-header">
+            <span class="method-badge badge-blue">Hardware Recovery</span>
+            <h3>4. Serial TTL UART (Unbrick STB)</h3>
+          </div>
+          <p class="method-desc">Jalur darurat untuk TV Box/STB jika bootloader macet atau tidak dapat IP dari router.</p>
+          <div class="code-box">
+            <div class="code-box-header">
+              <span>Koneksi Serial USB-TTL:</span>
+              <button class="copy-btn" data-target="code-method-ttl">Salin</button>
+            </div>
+            <pre><code id="code-method-ttl"># Hubungkan pin TX, RX, GND dongle USB-TTL ke pin board STB
+# Di Linux/Termux workstation:
+pkg install minicom # atau screen / picocom
+picocom -b 115200 /dev/ttyUSB0
+# Tekan Enter saat menyalakan STB untuk masuk U-Boot prompt</code></pre>
+          </div>
+          <div class="method-tips">
+            <strong>💡 Baudrate Umum:</strong> Board Amlogic B860H/HG680P biasanya menggunakan baudrate <code>115200</code>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: ANTIGRAVITY ORCHESTRATOR -->
+    <section id="tab-orchestrator" class="tab-pane">
+      <div class="section-intro">
+        <div>
+          <h2>Bagaimana Antigravity Mengorkestrasi Gadget Lama</h2>
+          <p>Antigravity bertindak sebagai <em>Supreme Ops Controller</em>. Anda memberikan instruksi natural, Antigravity melakukan inspeksi hardware, diagnosis dependensi, eksekusi SSH remote, validasi service, hingga auto-healing.</p>
+        </div>
+      </div>
+
+      <!-- Architecture Flow Diagram (Visual) -->
+      <div class="architecture-card">
+        <div class="arch-flow">
+          <div class="arch-step">
+            <div class="arch-icon">🧑‍💻</div>
+            <div class="arch-info">
+              <h4>1. Anda (User)</h4>
+              <p>Berikan instruksi misal: <em>"Nyalakan HP jadulku jadi server AdGuard + SQLite sync"</em></p>
+            </div>
+          </div>
+          <div class="arch-connector">➔</div>
+          <div class="arch-step highlight-step">
+            <div class="arch-icon">🧠</div>
+            <div class="arch-info">
+              <h4>2. Antigravity Brain</h4>
+              <p>Menganalisis CPU/RAM, menyusun playbook SSH, menjalankan subagent verifikasi, menangani error</p>
+            </div>
+          </div>
+          <div class="arch-connector">➔</div>
+          <div class="arch-step">
+            <div class="arch-icon">🌐</div>
+            <div class="arch-info">
+              <h4>3. SSH Bridge / Runner</h4>
+              <p>Eksekusi remote via <code>ssh</code> / <code>scp</code> / <code>run_command</code> tanpa sentuh keyboard target</p>
+            </div>
+          </div>
+          <div class="arch-connector">➔</div>
+          <div class="arch-step success-step">
+            <div class="arch-icon">📱♻️</div>
+            <div class="arch-info">
+              <h4>4. Reborn Gadget</h4>
+              <p>Aktif 24/7 sebagai DNS Sinkhole, Micro Cloud, Docker host, atau Bot Node hemat energi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Antigravity Workflows & Prompts -->
+      <div class="orchestrator-grid">
+        <div class="workflow-card">
+          <div class="workflow-title">
+            <span class="workflow-badge">Pola 1: Autonomous Goal (`/goal`)</span>
+            <h3>Full-Hands-Off Setup Node</h3>
+          </div>
+          <p>Kombinasi prompt lengkap untuk Antigravity agar mengurus dari A sampai Z secara mandiri hingga service benar-benar online.</p>
+          <div class="code-box">
+            <div class="code-box-header">
+              <span>Prompt Antigravity (/goal):</span>
+              <button class="copy-btn" data-target="code-orch-goal">Salin Prompt</button>
+            </div>
+            <pre><code id="code-orch-goal">/goal Jadikan perangkat lama di IP 192.168.1.88 (port 8022, user u0_a150) sebagai AdGuard Home DNS sinkhole dan web dashboard ringan.
+1. Hubungkan via SSH, lakukan healthcheck (cek arsitektur CPU, sisa RAM, disk space).
+2. Download binary AdGuard Home versi arm64, buat konfigurasi otomatis.
+3. Buat daemon service agar auto-start saat reboot.
+4. Lakukan curl test ke port 3000 dan laporkan link dashboard yang siap dipakai. Jangan berhenti sampai service terverifikasi aktif.</code></pre>
+          </div>
+        </div>
+
+        <div class="workflow-card">
+          <div class="workflow-title">
+            <span class="workflow-badge">Pola 2: Self-Healing & Diagnostics</span>
+            <h3>Auto-Healing & Wake-Lock Monitoring</h3>
+          </div>
+          <p>Antigravity dapat menjadwalkan timer (cron / schedule) untuk memantau apakah Android target mengalami Doze/Sleep dan otomatis menormalkannya.</p>
+          <div class="code-box">
+            <div class="code-box-header">
+              <span>Prompt Diagnosis & Heartbeat:</span>
+              <button class="copy-btn" data-target="code-orch-heal">Salin Prompt</button>
+            </div>
+            <pre><code id="code-orch-heal">Analisis status perangkat remote di 192.168.1.88.
+Jalankan script remote untuk memeriksa apakah termux-wake-lock aktif dan CPU throttling terjadi saat suhu baterai meningkat.
+Jika SSH unresponsive, buat instruksi failover atau restart service via adb wireless.</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subagent Specialization in Antigravity -->
+      <div class="subagent-showcase">
+        <h3>Subagent Roles yang Digerakkan Antigravity</h3>
+        <div class="subagent-cards">
+          <div class="subagent-item">
+            <span class="subagent-role-icon">🔍</span>
+            <strong>Target Auditor</strong>
+            <p>Memeriksa arsitektur CPU (armv7l, aarch64, x86_64), arsitektur libc (glibc vs musl/bionic), dan ruang penyimpanan.</p>
+          </div>
+          <div class="subagent-item">
+            <span class="subagent-role-icon">⚙️</span>
+            <strong>Playbook Executor</strong>
+            <p>Menyuntikkan file konfigurasi, mengompilasi package ringan, dan mengonfigurasi systemd / termux service runner.</p>
+          </div>
+          <div class="subagent-item">
+            <span class="subagent-role-icon">🛡️</span>
+            <strong>Security Hardener</strong>
+            <p>Mematikan port tidak terpakai, mengganti password default, mengaktifkan UFW, dan membatasi akses root.</p>
+          </div>
+          <div class="subagent-item">
+            <span class="subagent-role-icon">📊</span>
+            <strong>Telemetry Watcher</strong>
+            <p>Mencatat konsumsi RAM, suhu baterai/chipset, dan uptime server secara periodik.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: PLAYBOOK & SCRIPT BUILDER -->
+    <section id="tab-playbook" class="tab-pane">
+      <div class="section-intro">
+        <div>
+          <h2>Generator Playbook SSH & Skrip Otomasi</h2>
+          <p>Kustomisasi konfigurasi perangkat target Anda di bawah. Generator ini akan meracik skrip shell bash yang siap dieksekusi langsung atau didelegasikan ke Antigravity.</p>
+        </div>
+      </div>
+
+      <div class="builder-layout">
+        <!-- Input Form -->
+        <div class="builder-form-card">
+          <h3>Parameter Perangkat Target</h3>
+
+          <div class="form-group">
+            <label for="cfg-platform">Jenis Sistem Target:</label>
+            <select id="cfg-platform" class="form-input">
+              <option value="termux">Android (Termux Userland)</option>
+              <option value="debian">Debian / Armbian / Ubuntu Server</option>
+              <option value="alpine">Alpine Linux (Ultra Ringan)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cfg-ip">Alamat IP Target:</label>
+              <input type="text" id="cfg-ip" class="form-input" value="192.168.1.120" placeholder="e.g. 192.168.1.100">
+            </div>
+            <div class="form-group">
+              <label for="cfg-port">SSH Port:</label>
+              <input type="number" id="cfg-port" class="form-input" value="8022" placeholder="8022 atau 22">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cfg-user">Username:</label>
+              <input type="text" id="cfg-user" class="form-input" value="u0_a150" placeholder="u0_xxx atau root">
+            </div>
+            <div class="form-group">
+              <label for="cfg-hostname">Hostname Baru:</label>
+              <input type="text" id="cfg-hostname" class="form-input" value="ecobrain-node01" placeholder="ecobrain-01">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Pilih Servis / Peran yang Diinstal:</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label">
+                <input type="checkbox" id="role-adguard" checked>
+                <span>🛡️ AdGuard Home (Private DNS Sinkhole)</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="role-filebrowser" checked>
+                <span>📁 FileBrowser (Web File Cloud Ringan)</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="role-web">
+                <span>🌐 Nginx + SQLite + PHP / Micro-Web</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="role-telemetry" checked>
+                <span>📈 Eco-Monitor (CPU/RAM/Suhu Dashboard)</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="role-wake">
+                <span>🔋 Termux Wake-Lock & Power Save Off</span>
+              </label>
+            </div>
+          </div>
+
+          <button id="btn-generate-playbook" class="btn btn-primary btn-full">
+            <span>✨ Racik Skrip & Prompt Antigravity</span>
+          </button>
+        </div>
+
+        <!-- Generated Output Views -->
+        <div class="builder-output-card">
+          <div class="output-tab-bar">
+            <button class="out-tab active" data-view="bash">📜 Bash Setup Script (Target)</button>
+            <button class="out-tab" data-view="orchestrator">🧠 Antigravity Execution Prompt</button>
+            <button class="out-tab" data-view="oneliner">⚡ SSH One-Liner</button>
+          </div>
+
+          <div class="output-content">
+            <div id="view-bash" class="out-view active">
+              <div class="code-box">
+                <div class="code-box-header">
+                  <span id="script-filename">setup-node.sh</span>
+                  <div class="btn-group">
+                    <button class="btn-sm" id="btn-download-sh">💾 Unduh .sh</button>
+                    <button class="copy-btn" data-target="generated-bash">Salin</button>
+                  </div>
+                </div>
+                <pre><code id="generated-bash"># Menghasilkan skrip...</code></pre>
+              </div>
+            </div>
+
+            <div id="view-orchestrator" class="out-view">
+              <div class="code-box">
+                <div class="code-box-header">
+                  <span>Antigravity Orchestration Command</span>
+                  <button class="copy-btn" data-target="generated-orch">Salin Prompt</button>
+                </div>
+                <pre><code id="generated-orch"># Menghasilkan prompt...</code></pre>
+              </div>
+              <p class="field-hint">Salin prompt di atas dan jalankan di Antigravity CLI (<code>agy</code>) atau chat agent Anda!</p>
+            </div>
+
+            <div id="view-oneliner" class="out-view">
+              <div class="code-box">
+                <div class="code-box-header">
+                  <span>Eksekusi SSH Langsung dari Workstation</span>
+                  <button class="copy-btn" data-target="generated-oneliner">Salin Perintah</button>
+                </div>
+                <pre><code id="generated-oneliner"># Menghasilkan perintah...</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: VIRTUAL TERMINAL SIMULATOR -->
+    <section id="tab-terminal" class="tab-pane">
+      <div class="section-intro">
+        <div>
+          <h2>Simulator Terminal Antigravity Remote Ops</h2>
+          <p>Uji coba interaksi orkestrasi perintah remote secara virtual. Ketik perintah atau klik tombol cepat di bawah untuk melihat simulasi respon sistem target.</p>
+        </div>
+        <div class="terminal-quick-actions">
+          <button class="chip-btn" data-cmd="help">help</button>
+          <button class="chip-btn" data-cmd="connect">connect</button>
+          <button class="chip-btn" data-cmd="neofetch">neofetch</button>
+          <button class="chip-btn" data-cmd="install-adguard">install-adguard</button>
+          <button class="chip-btn" data-cmd="antigravity-sync">antigravity-sync</button>
+          <button class="chip-btn" data-cmd="clear">clear</button>
+        </div>
+      </div>
+
+      <div class="terminal-window">
+        <div class="terminal-titlebar">
+          <div class="terminal-controls">
+            <span class="control-dot red"></span>
+            <span class="control-dot yellow"></span>
+            <span class="control-dot green"></span>
+          </div>
+          <div class="terminal-title">antigravity-orchestrator@ecobrain: ~ (SSH Session: 192.168.1.120:8022)</div>
+          <div class="terminal-badge">LIVE SIMULATOR</div>
+        </div>
+        <div class="terminal-body" id="term-output">
+          <div class="term-line banner">🌿 EcoLinux Revive Virtual Terminal [Antigravity v2.4]</div>
+          <div class="term-line info">Ketik 'help' untuk melihat daftar perintah simulasi atau klik tombol di atas.</div>
+          <div class="term-line welcome">Status: Terhubung ke target [Android Termux 8-Core ARM64 | 4GB RAM]</div>
+        </div>
+        <div class="terminal-prompt-bar">
+          <span class="prompt-prefix">agy@remote:~$</span>
+          <input type="text" id="term-input" class="term-input" placeholder="Ketik perintah (contoh: status, install-adguard, neofetch)..." autocomplete="off" spellcheck="false">
+          <button id="term-submit" class="btn-sm btn-primary">Kirim</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: E-WASTE & ENERGY CALCULATOR -->
+    <section id="tab-calculator" class="tab-pane">
+      <div class="section-intro">
+        <div>
+          <h2>Kalkulator Dampak Lingkungan & Penghematan</h2>
+          <p>Melihat dampak nyata dari mendaur ulang gadget bekas dibanding membeli hardware baru (seperti Raspberry Pi 5 atau Mini PC Intel N100).</p>
+        </div>
+      </div>
+
+      <div class="calc-container">
+        <div class="calc-inputs-card">
+          <h3>Parameter Gadget yang Diselamatkan</h3>
+          
+          <div class="range-group">
+            <div class="range-header">
+              <span>Jumlah Gadget Didaur Ulang:</span>
+              <strong id="val-device-count">2 Perangkat</strong>
+            </div>
+            <input type="range" id="input-device-count" min="1" max="20" value="2" class="eco-slider">
+          </div>
+
+          <div class="range-group">
+            <div class="range-header">
+              <span>Rata-rata Konsumsi Daya Gadget (Watt):</span>
+              <strong id="val-device-watt">4.5 Watt</strong>
+            </div>
+            <input type="range" id="input-device-watt" min="1" max="30" step="0.5" value="4.5" class="eco-slider">
+            <small class="hint-text">HP Android rata-rata 2–5 Watt, PC Lama rata-rata 35–85 Watt.</small>
+          </div>
+
+          <div class="range-group">
+            <div class="range-header">
+              <span>Jam Operasional per Hari:</span>
+              <strong id="val-hours">24 Jam (Server 24/7)</strong>
+            </div>
+            <input type="range" id="input-hours" min="1" max="24" value="24" class="eco-slider">
+          </div>
+
+          <div class="range-group">
+            <div class="range-header">
+              <span>Harga Pembelian Hardware Baru yang Dihindari:</span>
+              <strong id="val-new-cost">Rp 1.200.000 / unit</strong>
+            </div>
+            <input type="range" id="input-new-cost" min="500000" max="3500000" step="100000" value="1200000" class="eco-slider">
+            <small class="hint-text">Misal perkiraan harga Mini PC / Raspberry Pi Kit.</small>
+          </div>
+        </div>
+
+        <div class="calc-results-card">
+          <div class="impact-badge-big">
+            <span class="impact-icon">🌍</span>
+            <div>
+              <h3>Kontribusi Nyata Anda untuk Bumi</h3>
+              <p>Mengubah limbah beracun menjadi aset komputasi produktif.</p>
+            </div>
+          </div>
+
+          <div class="impact-stats-grid">
+            <div class="impact-box">
+              <span class="impact-box-icon">⚖️</span>
+              <div class="impact-value" id="calc-ewaste-kg">0.50 Kg</div>
+              <div class="impact-label">Limbah Elektronik Dicegah</div>
+            </div>
+
+            <div class="impact-box">
+              <span class="impact-box-icon">🌱</span>
+              <div class="impact-value" id="calc-co2-kg">85 Kg</div>
+              <div class="impact-label">Estimasi Jejak Karbon Embodied Dihindari</div>
+            </div>
+
+            <div class="impact-box">
+              <span class="impact-box-icon">💰</span>
+              <div class="impact-value highlight-green" id="calc-money-saved">Rp 2.400.000</div>
+              <div class="impact-label">Uang Dihemat (Hindari Beli Baru)</div>
+            </div>
+
+            <div class="impact-box">
+              <span class="impact-box-icon">⚡</span>
+              <div class="impact-value" id="calc-kwh-year">39.4 kWh</div>
+              <div class="impact-label">Listrik per Tahun (Sangat Hemat)</div>
+            </div>
+          </div>
+
+          <div class="eco-quote">
+            <p><em>"Setiap smartphone lama yang Anda hidupkan kembali mencegah lithium, kobalt, dan plastik berakhir di tempat pembuangan akhir."</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 7: TIPS & TROUBLESHOOTING -->
+    <section id="tab-troubleshoot" class="tab-pane">
+      <div class="section-intro">
+        <div>
+          <h2>Tips, Trik & Menjaga Gadget Tetap Hidup 24/7</h2>
+          <p>Trik praktis merawat gadget daur ulang agar tidak cepat panas, baterai tidak kembung, dan koneksi remote tetap lancar.</p>
+        </div>
+      </div>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🔋</div>
+          <h3>Solusi Baterai Kembung (Bypass Battery)</h3>
+          <p>Smartphone yang dicolok 24 jam rentan membuat baterai kembung. Trik solusinya:</p>
+          <ul>
+            <li>Gunakan <strong>Smart Plug timer</strong> (nyala 2 jam, mati 2 jam).</li>
+            <li>Gunakan aplikasi baterai charge limiter seperti <code>AccA</code> jika di-root (batasi di 60%).</li>
+            <li>Lepas baterai dan pasang modul DC-DC Stepdown (Buck Converter) 4.2V langsung ke konektor pin baterai.</li>
+          </ul>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">💤</div>
+          <h3>Cegah Android Doze & CPU Sleep</h3>
+          <p>OS Android suka mematikan proses background penghemat baterai:</p>
+          <div class="code-box">
+            <pre><code># Di Termux aktifkan wake-lock:
+termux-wake-lock
+# Matikan Battery Optimization di Settings Android -> Apps -> Termux -> Battery -> Unrestricted!</code></pre>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">❄️</div>
+          <h3>Manajemen Panas & Pendingin Pasif</h3>
+          <p>Gadget tanpa kipas bisa mengalami thermal throttling:</p>
+          <ul>
+            <li>Buka casing belakang / penutup plastik smartphone & TV box.</li>
+            <li>Tempelkan heatsink aluminium mini pada SoC menggunakan thermal pad.</li>
+            <li>Letakkan di dekat ventilasi atau tambahkan kipas USB 5V silent (80mm).</li>
+          </ul>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-icon">🔗</div>
+          <h3>Akses Dari Luar Rumah (Tanpa IP Publik)</h3>
+          <p>Agar server recycle Anda bisa diakses dari mana saja tanpa langganan IP publik mahal:</p>
+          <ul>
+            <li><strong>Tailscale:</strong> Mesh VPN tercepat, cukup install di gadget dan HP luar.</li>
+            <li><strong>Cloudflare Tunnel (cloudflared):</strong> Ekspos web port langsung ke domain gratis dengan proteksi DDoS.</li>
+            <li><strong>ZeroTier:</strong> Alternatif VPN virtual LAN aman.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Device Detail Modal -->
+  <div class="modal-backdrop" id="device-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span id="modal-icon" class="modal-icon">📱</span>
+          <div>
+            <h3 id="modal-title">Nama Gadget</h3>
+            <span id="modal-badge" class="badge-pill">Kategori</span>
+          </div>
+        </div>
+        <button class="modal-close" id="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modal-body-content">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="modal-dismiss-btn">Tutup</button>
+        <button class="btn btn-primary" id="modal-apply-builder-btn">Gunakan di Playbook Generator ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast">Teks notifikasi</div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>🌱 <strong>EcoLinux Revive</strong> &bull; Dibuat untuk mengurangi e-waste global dengan kekuatan orkestrasi <strong>Antigravity AI</strong>.</p>
+      <p class="footer-sub">Dirancang untuk lingkungan Linux, Termux, dan Open Source Enthusiast &bull; 2026</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
